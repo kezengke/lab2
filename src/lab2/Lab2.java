@@ -5,45 +5,59 @@ public class Lab2
 
 	public static void main(String[] args)
 	{
+		// taking user input for numbers of question.
+		System.out.println("How many sets of questions would you like to have?: ");
+		int NumOQ = Integer.parseInt(System.console().readLine());
+		
+		System.out.println("Quiz starts now: ");
+		
 		Random random1 = new Random();
 		int score = 0;
-		while (true)
+		for (int x=0; x<NumOQ;x++)
 		{
+			// randomly generating question with it's answer.
 			int index = random1.nextInt(20);
 			String question = FULL_NAMES[index];
 			String correct_answer = SHORT_NAMES[index];
 			
-			
 			System.out.println(question);
-			long start = System.currentTimeMillis();
+			
+			// timing user input time costs.
+			double start = System.currentTimeMillis();
 			String user_answer = System.console().readLine().toUpperCase();
-			long end = System.currentTimeMillis();
+			double end = System.currentTimeMillis();
 			
+			double UsedTime = (end-start)/1000;
 			
+			// print user anser in upper_case.
 			System.out.println(user_answer);
 			
-
+			// quit option
 			if(user_answer.equals("QUIT"))
 			{
 				System.out.println("Test ends with score of "+ score);
 				break;
 			}
 			
+			// for right user input.
 			else if(user_answer.equals(correct_answer))
 			{
 				++score;
-				System.out.println("Right. Score = "+score + "; seconds = " + (end-start)/1000+"\n\n");
-				
+				System.out.println("Right. Score = "+score + "; seconds = " + UsedTime + "\n\n");	
 			}
+			
+			// for false user input and return correct answer.
 			else
 			{
-				System.out.println("Wrong. should be "+correct_answer + "; seconds = " + (end-start)/1000);
-				System.out.println("Test ends with score of "+ score);
-				break;
+				System.out.println("Wrong. should be " + correct_answer + 
+						"; Score = " + score + 
+						"; seconds = " + UsedTime + "\n\n");
 			}
-			
-			
+	
 		}
+		// ending phrase
+		System.out.println(NumOQ + " questions completed.");
+		System.out.println("Quiz ends with score of " + score);
 
 	}
 	
