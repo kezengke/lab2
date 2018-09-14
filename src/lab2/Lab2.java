@@ -32,7 +32,7 @@ public class Lab2
 			else if(user_answer.equals(correct_answer))
 			{
 				++score;
-				System.out.println("Right. Score = "+score + "; seconds = " + (end-start)/1000+"\n"+"\n");
+				System.out.println("Right. Score = "+score + "; seconds = " + (end-start)/1000+"\n\n");
 				
 			}
 			else
@@ -46,6 +46,7 @@ public class Lab2
 		}
 
 	}
+	
 	
 	public static String[] SHORT_NAMES = 
 		{ "A","R", "N", "D", "C", "Q", "E", 
