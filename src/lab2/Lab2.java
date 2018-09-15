@@ -5,7 +5,7 @@ public class Lab2
 
 	public static void main(String[] args)
 	{
-		// taking user input for numbers of question.
+		// taking in user input for numbers of question.
 		System.out.println("How many sets of questions would you like to have?: ");
 		int NumOQ = Integer.parseInt(System.console().readLine());
 		
@@ -29,7 +29,7 @@ public class Lab2
 			
 			double UsedTime = (end-start)/1000;
 			
-			// print user anser in upper_case.
+			// print user answer in upper-case.
 			System.out.println(user_answer);
 			
 			// quit option
@@ -49,9 +49,7 @@ public class Lab2
 			// for false user input and return correct answer.
 			else
 			{
-				System.out.println("Wrong. should be " + correct_answer + 
-						"; Score = " + score + 
-						"; seconds = " + UsedTime + "\n\n");
+				System.out.println("Wrong. should be " + correct_answer + "; Score = " + score + "; seconds = " + UsedTime + "\n\n");
 			}
 	
 		}
