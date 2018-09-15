@@ -27,8 +27,8 @@ public class Lab2
 			String user_answer = System.console().readLine().toUpperCase();
 			double end = System.currentTimeMillis();
 			
-			double MILLISEC_IN_SEC = 1000;
-			double UsedTime = (end-start)/MILLISEC_IN_SEC;
+			double MILLISECS_IN_SEC = 1000;
+			double UsedTime = (end-start)/MILLISECS_IN_SEC;
 			
 			
 			System.out.println(user_answer);
