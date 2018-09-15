@@ -5,14 +5,14 @@ public class Lab2
 
 	public static void main(String[] args)
 	{
-		// taking in user input for numbers of question.
-		System.out.println("How many sets of questions would you like to have?: ");
+
+		PromptQ();
 		int NumOQ = Integer.parseInt(System.console().readLine());
 		
-		System.out.println("Quiz starts now: ");
+		StartingPhrase();
 		
 		Random random1 = new Random();
-		int score = 0;
+		int SCORE = 0;
 		for (int x=0; x<NumOQ;x++)
 		{
 			// randomly generating question with it's answer.
@@ -27,38 +27,84 @@ public class Lab2
 			String user_answer = System.console().readLine().toUpperCase();
 			double end = System.currentTimeMillis();
 			
-			double UsedTime = (end-start)/1000;
+			double MILLISEC_IN_SEC = 1000;
+			double UsedTime = (end-start)/MILLISEC_IN_SEC;
 			
-			// print user answer in upper-case.
+			
 			System.out.println(user_answer);
 			
-			// quit option
+
 			if(user_answer.equals("QUIT"))
 			{
-				System.out.println("Test ends with score of "+ score);
 				break;
 			}
 			
-			// for right user input.
 			else if(user_answer.equals(correct_answer))
 			{
-				++score;
-				System.out.println("Right. Score = "+score + "; seconds = " + UsedTime + "\n\n");	
+				++SCORE;
+				CorrectInput(SCORE, UsedTime);
 			}
 			
-			// for false user input and return correct answer.
 			else
 			{
-				System.out.println("Wrong. should be " + correct_answer + "; Score = " + score + "; seconds = " + UsedTime + "\n\n");
+				FalseInput(correct_answer, SCORE, UsedTime);
 			}
 	
 		}
-		// ending phrase
-		System.out.println(NumOQ + " questions completed.");
-		System.out.println("Quiz ends with score of " + score);
+
+		EndingPhrase(SCORE,NumOQ);
 
 	}
 	
+	
+	
+	
+	/**
+	 * informing quiz is starting.
+	 */
+	public static void StartingPhrase()
+	{
+		System.out.println("\n\nQuiz starts now: ");
+	}
+	
+	/**
+	 * taking in user input for numbers of question.
+	 */
+	public static void PromptQ()
+	{
+		System.out.println("How many sets of questions would you like to have?: ");
+	}
+	
+	/**
+	 * returning feedback for right user answer.
+	 * @param b current score
+	 * @param c time used for user input
+	 */
+	public static void CorrectInput(int b, double c)
+	{
+		System.out.println("Right. Score = "+ b + "; seconds = " + c + "\n\n");
+	}
+	
+	/**
+	 * returning feedback for false user answer.
+	 * @param d the correct answer
+	 * @param e current score
+	 * @param f time used for user input
+	 */
+	public static void FalseInput(String d, int e, double f)
+	{
+		System.out.println("Wrong. should be " + d + "; Score = " + e + "; seconds = " + f + "\n\n");
+	}
+	
+	/**
+	 * inform quiz ends and returning final score.
+	 * @param g final score
+	 * @param h total score
+	 */
+	public static void EndingPhrase(int g, int h)
+	{
+		System.out.println("Quiz ended with score of " + g +" out of " + h);
+	}
 	
 	public static String[] SHORT_NAMES = 
 		{ "A","R", "N", "D", "C", "Q", "E", 
@@ -75,6 +121,4 @@ public class Lab2
 		"phenylalanine", "proline", 
 		"serine","threonine","tryptophan", 
 		"tyrosine", "valine"};
-
-
 }
